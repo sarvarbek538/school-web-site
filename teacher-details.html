@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'qituvchi haqida ma'lumot</title>
+    <style>
+        /* Umumiy uslub */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* Konteyner */
+        
+        #teacher-info {
+            background-color: #ffffff;
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        /* Sarlavha */
+        
+        h2 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        /* Ma'lumotlar */
+        
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        
+        span {
+            font-weight: bold;
+            color: #555;
+        }
+        /* Qaytish tugmasi */
+        
+        a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+        
+        a:hover {
+            background-color: #0056b3;
+        }
+        /* Mobil moslashuv */
+        
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 16px;
+            }
+            a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- O'qituvchi haqida bo'lim -->
+    <div id="teacher-info">
+        <h2>O'qituvchi haqida</h2>
+        <p>O'qituvchining ismi: <span id="teacher-name-span"></span></p>
+        <p>O'qituvchining familiyasi: <span id="teacher-surname-span"></span></p>
+        <p>Telefon raqami: <span id="teacher-phone-span"></span></p>
+        <a href="index.html">Bosh sahifaga qaytish</a>
+    </div>
+
+    <script>
+        // O'qituvchi haqida ma'lumotlarni olish va ko'rsatish
+        window.addEventListener('load', function() {
+            const name = localStorage.getItem("searchName");
+            const surname = localStorage.getItem("searchSurname");
+            const phone = localStorage.getItem("teacherPhone");
+
+            if (name && surname && phone) {
+                document.getElementById("teacher-name-span").textContent = name;
+                document.getElementById("teacher-surname-span").textContent = surname;
+                document.getElementById("teacher-phone-span").textContent = phone;
+            } else {
+                document.getElementById("teacher-info").innerHTML = `
+                    <p style="color: red;">O'qituvchi ma'lumotlari topilmadi.</p>
+                    <a href="index.html">Bosh sahifaga qaytish</a>
+                `;
+            }
+        });
+    </script>
+</body>
+
+</html>
